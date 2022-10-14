@@ -1,14 +1,14 @@
 const button = document.getElementById("button");
-const body = document.body
+const container = document.getElementById("container")
 let isElement = false;
 
-function appendNew(body, pesos, dolar){
+function appendNew(container, pesos, dolar){
     let result = pesos / dolar;
     result = Math.round(result*100)/100;
 
     const createP = document.createElement("p");
     createP.setAttribute("id", "element");
-    body.appendChild(createP);
+    container.appendChild(createP);
 
     const text = document.createTextNode("Hoy $" + pesos + " pesos, valen $" + result + " dólares.");
     createP.appendChild(text);
@@ -30,7 +30,7 @@ button.onclick = function(){
     let dolar = Number(document.getElementById("dolar").innerHTML);
 
     if(isElement === false){
-        appendNew(body, pesos, dolar);
+        appendNew(container, pesos, dolar);
     }
     else{
         editNew(pesos, dolar)

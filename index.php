@@ -9,9 +9,9 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
         
         body {
-            background-color: black;
+            background-color: white;
             font-family: 'Montserrat', sans-serif;
-            color: white;
+            color: black;
         }
 
         #container{
@@ -24,6 +24,10 @@
 
         #container-title{
             display: inline;
+        }
+
+        p {
+            text-align: center;
         }
     </style>
 </head>

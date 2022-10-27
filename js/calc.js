@@ -1,35 +1,61 @@
-const button = document.getElementById("button");
+const buttonBuy = document.getElementById("button-buy");
+const buttonSell = document.getElementById("button-sell");
+
 const body = document.body;
 let appendExist = false;
 
-function pesos2Dolar(pesos, dolar){
-    let result = pesos / dolar;
+function buying(body, dollarValue, input){
+    let unit1 = "USD";
+    let unit2 = "ARS";
+    let unit3 = "compra";
+    let result = input * dollarValue;
     result = Math.round(result*100)/100;
     
-    return result;
+    appendNew(body, result, input, unit1, unit2, unit3);
 }
 
-function appendNew(body, pesos, dolar){
+function selling(body, dollarValue, input){
+    let unit1 = "ARS";
+    let unit2 = "USD";
+    let unit3 = "venta";
+    let result = input / dollarValue;
+    result = Math.round(result*100)/100;
+    
+    appendNew(body, result, input, unit1, unit2, unit3);
+}
+
+function appendNew(body, result, input, unit1, unit2, unit3){
+
+    text = "Hoy " + input + " " + unit1 + " valen " + result + " " + unit2 + " para la " + unit3;
+
     if (appendExist === false){
 
         const createP = document.createElement("p");
         body.appendChild(createP);
 
-        const text = document.createTextNode("Hoy $" + pesos + " pesos, valen $" + pesos2Dolar(pesos, dolar) + " dólares.");
-        createP.appendChild(text);
+        const textNode = document.createTextNode(text);
+        createP.appendChild(textNode);
         createP.setAttribute("id", "createdP")
 
         appendExist = true;
     }
     else {
         const createdP = document.getElementById("createdP");
-        createdP.innerHTML = "Hoy $" + pesos + " pesos, valen $" + pesos2Dolar(pesos, dolar) + " dólares.";
+        createdP.innerHTML = text;
     }
 }
 
-button.onclick = function(){
-    let pesos = document.getElementById("pesos").value;
-    let dolar = Number(document.getElementById("dolar").innerHTML);
+buttonBuy.onclick = function(){
+    const dollarValue = Number(document.getElementById("compra").innerHTML);
+    let input = document.getElementById("input-dollars").value;
 
-    appendNew(body, pesos, dolar);
+    buying(body, dollarValue, input);
+}
+
+buttonSell.onclick = function(){
+    const dollarValue = Number(document.getElementById("venta").innerHTML);
+    let input = document.getElementById("input-pesos").value;
+
+    selling(body, dollarValue, input);
+    console.log(dollarValue)
 }

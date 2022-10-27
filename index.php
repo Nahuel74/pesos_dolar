@@ -12,44 +12,83 @@
             background-color: white;
             font-family: 'Montserrat', sans-serif;
             color: black;
+        
+            margin-top: 5em;
         }
 
-        #container{
+        .container-column{
             display: flex;
             flex-flow: column;
             align-items: center;
 
-            margin-top: 10%;
+            margin: 0 1em;
         }
 
-        #container-title{
-            display: inline;
+        .container-row {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        h3 {
+            margin: 0.5em;
         }
 
         p {
             text-align: center;
         }
+        
+        button {
+            margin: 0.5em;
+        }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="container-title">
-            <h2 style="display: inline">El Dólar Blue cuesta: ARS
-                <h2 style="display: inline" id = "dolar">
+    <div class="container-row">
+        <div class="container-column">
+            <div class="container-row">
+                <h2 id = "compra">
                     <?php
-                        require "partials/scrap-function.php";
-                        echo dolarHoy();
-                    ?> 
-                </h2> 
-            </h2>
+                        require_once "partials/scrap-function.php";
+                        buying();
+                    ?>
+                    <h2>&nbsp;ARS</h2>
+                </h2>
+                </div>
+                <h3>Compra</h3>
         </div>
-        <div> 
-            <p>Convertí tus pesos a Dólar Blue</p>
-            <input type="number" id="pesos">
-            <button id="button" type="button">Calcular</button>
+        <div class="container-column">
+            <div class="container-row">
+                <h2 id = "venta">
+                    <?php
+                        require_once "partials/scrap-function.php";
+                        selling();
+                    ?>
+                    <h2>&nbsp;ARS</h2>
+                </h2>
+            </div>
+            <h3>Venta</h3>
+        </div>
+    </div>
+    <div>
+        <div class="container-row">
+        <div class="container-column">
+                <p>Dólar blue a Pesos</p>
+                <input type="number" id="input-dollars">
+                <button id="button-buy" type="button">Calcular</button>
+            </div>
+            <div class="container-column">
+                <p>Pesos a Dólar Blue</p>
+                <input type="number" id="input-pesos">
+                <button id="button-sell" type="button">Calcular</button>
+            </div>
         </div>
     </div>
 
-<script type="text/javascript" src="js/calc.js"></script>
+    <script type="text/javascript" src="js/calc.js"></script>
 </body>
 </html>

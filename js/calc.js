@@ -49,13 +49,16 @@ buttonBuy.onclick = function(){
     const dollarValue = Number(document.getElementById("compra").innerHTML);
     let input = document.getElementById("input-dollars").value;
 
-    buying(body, dollarValue, input);
+    if (input != "") {
+        buying(body, dollarValue, input);
+    }
 }
 
 buttonSell.onclick = function(){
     const dollarValue = Number(document.getElementById("venta").innerHTML);
     let input = document.getElementById("input-pesos").value;
-
-    selling(body, dollarValue, input);
-    console.log(dollarValue)
+    
+    if (input != "") {
+        selling(body, dollarValue, input);
+    }
 }

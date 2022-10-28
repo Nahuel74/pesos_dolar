@@ -87,7 +87,7 @@
                 <button id="button-sell" type="button">Calcular</button>
             </div>
         </div>
-    </div>
+    </div>          
 
     <script type="text/javascript" src="js/calc.js"></script>
 </body>

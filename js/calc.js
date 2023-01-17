@@ -1,3 +1,8 @@
+const val = document.getElementsByClassName('.val');
+
+console.log(val)
+
+/*
 const buttonBuy = document.getElementById("button-buy");
 const buttonSell = document.getElementById("button-sell");
 
@@ -62,3 +67,5 @@ buttonSell.onclick = function(){
         selling(body, dollarValue, input);
     }
 }
+
+*/

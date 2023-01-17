@@ -4,91 +4,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-        
-        body {
-            background-color: white;
-            font-family: 'Montserrat', sans-serif;
-            color: black;
-        
-            margin-top: 5em;
-        }
-
-        .container-column{
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-
-            margin: 0 1em;
-        }
-
-        .container-row {
-            display: flex;
-            flex-flow: row;
-            justify-content: space-around;
-        }
-
-        h2 {
-            margin: 0;
-        }
-
-        h3 {
-            margin: 0.5em;
-        }
-
-        p {
-            text-align: center;
-        }
-        
-        button {
-            margin: 0.5em;
-        }
-    </style>
+    <title>DolarARG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container-row">
-        <div class="container-column">
-            <div class="container-row">
-                <h2 id = "compra">
-                    <?php
-                        require_once "partials/scrap-function.php";
-                        buying();
-                    ?>
-                    <h2>&nbsp;ARS</h2>
-                </h2>
-                </div>
-                <h3>Compra</h3>
-        </div>
-        <div class="container-column">
-            <div class="container-row">
-                <h2 id = "venta">
-                    <?php
-                        require_once "partials/scrap-function.php";
-                        selling();
-                    ?>
-                    <h2>&nbsp;ARS</h2>
-                </h2>
-            </div>
-            <h3>Venta</h3>
-        </div>
-    </div>
-    <div>
-        <div class="container-row">
-        <div class="container-column">
-                <p>Dólar blue a Pesos</p>
-                <input type="number" id="input-dollars">
-                <button id="button-buy" type="button">Calcular</button>
-            </div>
-            <div class="container-column">
-                <p>Pesos a Dólar Blue</p>
-                <input type="number" id="input-pesos">
-                <button id="button-sell" type="button">Calcular</button>
-            </div>
-        </div>
-    </div>          
+    <table>
 
+        <thead>
+            <tr>
+                <th colspan="2">Dólar Oficial</th>
+                <th colspan="2">Dólar Blue</th>
+                <th>Dólar 'Solidario'</th>
+                <th>Pesos (Steam, compras al exterior, etc.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Compra</td>
+                <td>Venta</td>
+                <td>Compra</td>
+                <td>Venta</td>
+                <td>Venta</td>
+                <td>Venta</td>
+            </tr>
+            <tr> 
+                
+            <!-- 
+                Dolar[x]:
+                0: Blue Compra
+                1: Blue Venta
+                2: Blue Compra
+                3: Blue Venta
+                4: Oficial Compra
+                5: Oficial Venta
+                6: Bolsa Compra
+                7: Bolsa Venta
+                8: CCL Compra
+                9: CCL Venta
+                10: Cripto Compra
+                11: Cripto Venta
+                12: Solidario
+            -->
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[4] . ' ARS';
+                    ?>
+                </td>
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[5] . ' ARS';
+                    ?>
+                </td>
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[0] . ' ARS';
+                    ?>
+                </td>
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[1] . ' ARS';
+                    ?>
+                </td>
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[12] . ' ARS';
+                    ?>
+                </td>                
+                <td class='val'>
+                    <?php 
+                        require_once 'partials/scrap-function.php';
+                        $dolar = dolarHoy();
+                        echo $dolar[5] + $dolar[5]*0.75 . '*  ARS';
+                    ?> 
+                </td>
+            </tr>
+            <tr>
+                <td> <input type='number' placeholder='Dolar Oficial a Pesos'> <button class="button"> = </button></td>
+                <td> <input type='number' placeholder='Pesos  a Dolar Oficial'><button class="button"> = </button></td>
+                <td> <input type='number' placeholder='Dolar Blue a Pesos'><button class="button"> = </button></td>
+                <td> <input type='number' placeholder='Pesos a Dolar Blue'><button class="button"> = </button></td>
+                <td> <input type='number' placeholder='Pesos a Dolar "Solidario"'><button class="button"> = </button></td>
+                <td> <input type='number' placeholder='Pesos a Pesos (impuestos)'><button class="button"> = </button></td>
+            </tr>
+            <tr>
+               <td colspan='6' id='result'></td> 
+            </tr>
+        </tbody>
+    </table>
+    <?php 
+        //require_once 'partials/scrap-function.php';
+        //info();
+    ?>
     <script type="text/javascript" src="js/calc.js"></script>
 </body>
 </html>

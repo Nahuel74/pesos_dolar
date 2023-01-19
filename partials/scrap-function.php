@@ -6,7 +6,7 @@
 
         $dom = new DOMDocument();
         $dom -> loadHTML(curl_exec($url));
-        
+        $info = curl_getinfo($url);
         curl_close($url);
 
 

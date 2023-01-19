@@ -1,71 +1,113 @@
-const val = document.getElementsByClassName('.val');
+const values = Array.from(document.querySelectorAll('.values'));
 
-console.log(val)
+function values2Num(values, i){
+    let value = Number(values[i].innerText.replace(/[^\d.-]/g, ''));
+    return value;
+}
 
-/*
-const buttonBuy = document.getElementById("button-buy");
-const buttonSell = document.getElementById("button-sell");
+function buyOficial(input, num){
 
-const body = document.body;
-let appendExist = false;
-
-function buying(body, dollarValue, input){
-    let unit1 = "USD";
-    let unit2 = "ARS";
-    let unit3 = "compra";
-    let result = input * dollarValue;
-    result = Math.round(result*100)/100;
+    let result = input * num;
+    result = result.toFixed(2)
     
-    appendNew(body, result, input, unit1, unit2, unit3);
+    return `${input} USD Oficial valen ${result} ARS para la compra`;
 }
 
-function selling(body, dollarValue, input){
-    let unit1 = "ARS";
-    let unit2 = "USD";
-    let unit3 = "venta";
-    let result = input / dollarValue;
-    result = Math.round(result*100)/100;
+function sellOficial(input, num){
+
+    let result = input / num;
+    result = result.toFixed(2)
+
     
-    appendNew(body, result, input, unit1, unit2, unit3);
+    return `${input} ARS valen ${result} USD Oficiales para la venta`;
 }
 
-function appendNew(body, result, input, unit1, unit2, unit3){
+function buyBlue(input, num){
 
-    text = "Hoy " + input + " " + unit1 + " valen " + result + " " + unit2 + " para la " + unit3;
+    let result = input * num;
+    result = result.toFixed(2)
 
-    if (appendExist === false){
-
-        const createP = document.createElement("p");
-        body.appendChild(createP);
-
-        const textNode = document.createTextNode(text);
-        createP.appendChild(textNode);
-        createP.setAttribute("id", "createdP")
-
-        appendExist = true;
-    }
-    else {
-        const createdP = document.getElementById("createdP");
-        createdP.innerHTML = text;
-    }
-}
-
-buttonBuy.onclick = function(){
-    const dollarValue = Number(document.getElementById("compra").innerHTML);
-    let input = document.getElementById("input-dollars").value;
-
-    if (input != "") {
-        buying(body, dollarValue, input);
-    }
-}
-
-buttonSell.onclick = function(){
-    const dollarValue = Number(document.getElementById("venta").innerHTML);
-    let input = document.getElementById("input-pesos").value;
     
-    if (input != "") {
-        selling(body, dollarValue, input);
-    }
+    return `${input} USD Blue valen ${result} ARS para la compra`;
 }
 
-*/
+function sellBlue(input, num){
+
+    let result = input / num;
+    result = result.toFixed(2)
+
+    
+    return `${input} ARS valen ${result} USD Blue para la venta`;
+}
+
+function sellSolidario(input, num){
+
+    let result = input / num;
+    result = result.toFixed(2)
+
+    
+    return `${input} ARS valen ${result} USD Solidario para la venta`;
+}
+
+function sellPesos(input){
+    
+    let result = input + input * Number(0.75);
+    let result2 = input + input;
+
+    result = result.toFixed(2)
+    result2 = result2.toFixed(2)
+
+
+    return `${input} ARS valen ${result} ARS con 75% de impuestos estándar, o ${result2} ARS si se excedieron los 300 USD mensuales`;
+}
+
+
+function calc(values){
+    let inputs = Array.from(document.querySelectorAll('.inputs'));
+    let inputsCounter = 0;
+    let result;
+
+    for (let i = 0; i < inputs.length; i++){
+        if (inputs[i].value > 0){
+            inputsCounter++;
+        }
+        if (inputsCounter > 1){
+            result = 'Selecciona una sola operación por vez';
+            return result;
+        }
+    }
+    for (let i = 0; i < inputs.length; i++){
+        let input = Number(inputs[i].value);
+        let num = values2Num(values, i);
+        if (input != 0) {
+            switch(i) {
+                case 0:
+                    result = buyOficial(input, num);
+                    break;
+                case 1:
+                    result = sellOficial(input, num);
+                    break;
+                case 2:
+                    result = buyBlue(input, num);
+                    break;
+                case 3:
+                    result = sellBlue(input, num);
+                    break;
+                case 4:
+                    result = sellSolidario(input, num);
+                    break;
+                case 5:
+                    result = sellPesos(input);
+                    break;
+                default:
+                    result = 'Ocurrió un problema, verifica que ingresaste un número válido o actualiza la pestaña';
+            }
+        }
+        else {
+            if (!result) {
+                result = 'Ocurrió un problema, verifica que ingresaste un número válido o actualiza la pestaña';
+            }
+        }
+    }
+    return result;
+}

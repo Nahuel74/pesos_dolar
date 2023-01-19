@@ -28,7 +28,7 @@
                 <td>Compra</td>
                 <td>Venta</td>
                 <td>Venta</td>
-                <td>Venta</td>
+                <td>Compra</td>
             </tr>
             <tr> 
                 
@@ -48,66 +48,67 @@
                 11: Cripto Venta
                 12: Solidario
             -->
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
                         echo $dolar[4] . ' ARS';
                     ?>
                 </td>
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
                         echo $dolar[5] . ' ARS';
                     ?>
                 </td>
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
                         echo $dolar[0] . ' ARS';
                     ?>
                 </td>
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
                         echo $dolar[1] . ' ARS';
                     ?>
                 </td>
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
                         echo $dolar[12] . ' ARS';
                     ?>
                 </td>                
-                <td class='val'>
+                <td class='values'>
                     <?php 
                         require_once 'partials/scrap-function.php';
                         $dolar = dolarHoy();
-                        echo $dolar[5] + $dolar[5]*0.75 . '*  ARS';
+                        echo '75% (o 100%)';
                     ?> 
                 </td>
             </tr>
             <tr>
-                <td> <input type='number' placeholder='Dolar Oficial a Pesos'> <button class="button"> = </button></td>
-                <td> <input type='number' placeholder='Pesos  a Dolar Oficial'><button class="button"> = </button></td>
-                <td> <input type='number' placeholder='Dolar Blue a Pesos'><button class="button"> = </button></td>
-                <td> <input type='number' placeholder='Pesos a Dolar Blue'><button class="button"> = </button></td>
-                <td> <input type='number' placeholder='Pesos a Dolar "Solidario"'><button class="button"> = </button></td>
-                <td> <input type='number' placeholder='Pesos a Pesos (impuestos)'><button class="button"> = </button></td>
+                <td> <input type='number' min='0' placeholder='Dolar Oficial a Pesos' class='inputs'></td>
+                <td> <input type='number' min='0' placeholder='Pesos  a Dolar Oficial' class='inputs'></td>
+                <td> <input type='number' min='0' placeholder='Dolar Blue a Pesos' class='inputs'></td>
+                <td> <input type='number' min='0' placeholder='Pesos a Dolar Blue' class='inputs'></td>
+                <td> <input type='number' min='0' placeholder='Pesos a Dolar "Solidario"' class='inputs'></td>
+                <td> <input type='number' min='0' placeholder='Pesos a Pesos' class='inputs'></td>
             </tr>
             <tr>
-               <td colspan='6' id='result'></td> 
+                <td colspan='6'> <button id='clear'> Ø </button> <button id="button"> = </button> </td>
+            </tr>
+            <tr>
+               <td colspan='6' id='td-result'></td> 
             </tr>
         </tbody>
     </table>
-    <?php 
-        //require_once 'partials/scrap-function.php';
-        //info();
-    ?>
+
     <script type="text/javascript" src="js/calc.js"></script>
+    <script type="text/javascript" src="js/print.js"></script>
 </body>
 </html>

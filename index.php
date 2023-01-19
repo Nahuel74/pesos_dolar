@@ -28,7 +28,7 @@
                 <td>Compra</td>
                 <td>Venta</td>
                 <td>Venta</td>
-                <td>Compra</td>
+                <td></td>
             </tr>
             <tr> 
                 

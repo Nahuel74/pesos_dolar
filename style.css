@@ -1,0 +1,54 @@
+body {
+    background-color: rgb(31, 31, 31);
+    font-family: 'Roboto', sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+    margin-top: 5em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+
+  }
+  
+  th, td {
+    border: 1px solid #787878;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  input[type='number'] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  input::placeholder{
+    color: black;
+  }
+
+  button {
+    background-color: rgb(121, 121, 121);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  

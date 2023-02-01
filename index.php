@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+        require_once 'partials/scrap-function.php';
+        $dolar = dolarHoy();
+    ?>
     <table>
-
         <thead>
             <tr>
                 <th colspan="2">Dólar Oficial</th>
@@ -50,43 +53,31 @@
             -->
                 <td class='values'>
                     <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
                         echo $dolar[4] . ' ARS';
                     ?>
                 </td>
                 <td class='values'>
                     <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
                         echo $dolar[5] . ' ARS';
                     ?>
                 </td>
                 <td class='values'>
                     <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
                         echo $dolar[0] . ' ARS';
                     ?>
                 </td>
                 <td class='values'>
-                    <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
+                    <?php ;
                         echo $dolar[1] . ' ARS';
                     ?>
                 </td>
                 <td class='values'>
                     <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
                         echo $dolar[12] . ' ARS';
                     ?>
                 </td>                
                 <td class='values'>
                     <?php 
-                        require_once 'partials/scrap-function.php';
-                        $dolar = dolarHoy();
                         echo '75% (o 100%)';
                     ?> 
                 </td>

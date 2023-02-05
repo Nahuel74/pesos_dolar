@@ -65,7 +65,8 @@ table {
         color: transparent;
    }
 
-   th {
-    font-size: 0.8em;
-   }
+   th, td {
+    padding: 2px;
+    font-size: 0.75em;
+  }
 }

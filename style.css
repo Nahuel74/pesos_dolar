@@ -1,3 +1,5 @@
+
+
 body {
     background-color: rgb(31, 31, 31);
     font-family: 'Roboto', sans-serif;
@@ -51,4 +53,20 @@ table {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 
-  
+  @media (max-width: 768px) {
+
+    input[type='number']{
+        padding: 10px 0;
+        width: 80%;
+        text-align: center;
+    }
+
+    input[type='number']::placeholder {
+        color: transparent;
+   }
+
+   th, td {
+    padding: 2px;
+    font-size: 0.75em;
+  }
+}

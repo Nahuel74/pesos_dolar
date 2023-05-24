@@ -1,103 +1,62 @@
-function buyOficial(input, num){
+const toFixed = (num) => Number(num.toFixed(2))
 
-    let result = input * num;
-    result = result.toFixed(2)
-    
-    return `${input} USD Oficial valen ${result} ARS para la compra`;
+const buyOficial = (input, num) => `${input} USD Oficial valen ${toFixed(input * num)} ARS para la compra`
+ 
+const sellOficial = (input, num) => `${input} ARS valen ${toFixed(input / num)} USD Oficiales para la venta`
+
+const buyBlue = (input, num) => `${input} USD Blue valen ${toFixed(input * num)} ARS para la compra`
+
+const sellBlue = (input, num) => `${input} ARS valen ${toFixed(input / num)} USD Blue para la venta`
+
+const sellSolidario = (input, num) => `${input} ARS valen ${toFixed(input / num)} USD Solidario para la venta`
+
+const sellPesos = (input) => {
+    const inputValue = Number(input)
+    const result = toFixed(inputValue + inputValue * 0.75)
+    const result2 = toFixed(inputValue * 2)
+
+    return `${inputValue} ARS valen ${result} ARS con 75% de impuestos estándar, o ${result2} ARS si se excedieron los 300 USD mensuales`;
 }
 
-function sellOficial(input, num){
+const prices2array = (prices) => {
 
-    let result = input / num;
-    result = result.toFixed(2)
+    const values = $(prices).map( (index, element) => { 
+        return Number($(element).text().replace(/[^\d.]/g, ''))
+    })
 
-    
-    return `${input} ARS valen ${result} USD Oficiales para la venta`;
+    return values
 }
 
-function buyBlue(input, num){
+export const calc = (prices, inputs) => {
 
-    let result = input * num;
-    result = result.toFixed(2)
+    const functions = [
+        buyOficial,
+        sellOficial,
+        buyBlue,
+        sellBlue,
+        sellSolidario,
+        sellPesos
+    ]
 
-    
-    return `${input} USD Blue valen ${result} ARS para la compra`;
-}
-
-function sellBlue(input, num){
-
-    let result = input / num;
-    result = result.toFixed(2)
-
-    
-    return `${input} ARS valen ${result} USD Blue para la venta`;
-}
-
-function sellSolidario(input, num){
-
-    let result = input / num;
-    result = result.toFixed(2)
-
-    
-    return `${input} ARS valen ${result} USD Solidario para la venta`;
-}
-
-function sellPesos(input){
-
-    input = Number(input)
-    
-    let result = input + input * Number(0.75)
-    let result2 = input + input
-
-    result = result.toFixed(2)
-    result2 = result2.toFixed(2)
-
-
-    return `${input} ARS valen ${result} ARS con 75% de impuestos estándar, o ${result2} ARS si se excedieron los 300 USD mensuales`;
-}
-
-function prices2array(prices){
-    let array = []
-    $(prices).each(
-        (index, element) => {
-            element = Number($(element).text().replace(/[^\d.]/g, ''))
-            array.push(element)
-        }
-    )
-    return array
-}
-
-export function calc(prices, inputs){
+    const values = prices2array(prices)
     let result
-
-    let values = prices2array(prices)
 
     if(inputs.filter((index, element) => $(element).val() != "").length > 1){
         return result = "No puedes cargar más de un tipo de cambio por vez"
     }
     
-    let activeIndex = $(inputs).filter((index, element) => $(element).val() != "").index(".inputs")
-    switch(activeIndex) {
-        case 0:
-            result = buyOficial($(inputs)[activeIndex].value, values[activeIndex])
-            break
-        case 1:
-            result = sellOficial($(inputs)[activeIndex].value, values[activeIndex])
-            break
-        case 2:
-            result = buyBlue($(inputs)[activeIndex].value, values[activeIndex])
-            break
-        case 3:
-            result = sellBlue($(inputs)[activeIndex].value, values[activeIndex])
-            break
-        case 4:
-            result = sellSolidario($(inputs)[activeIndex].value, values[activeIndex])
-            break
-        case 5:
-            result = sellPesos($(inputs)[activeIndex].value)
-            break
-        default:
-            result = 'Ocurrió un problema, verifica que ingresaste un número válido o actualiza la pestaña'
+    const activeIndex = $(inputs).filter((index, element) => $(element).val() != "").index(".inputs")
+
+    const index = activeIndex >= 0 && activeIndex < functions.length ? activeIndex : -1
+
+    const selectedFunction = functions[index]
+
+    if(selectedFunction){
+        result = selectedFunction($(inputs)[activeIndex].value, values[activeIndex])
     }
+    else{
+        result = 'Ocurrió un problema, verifica que ingresaste un número válido o actualiza la pestaña'
+    }
+
     return result
 }

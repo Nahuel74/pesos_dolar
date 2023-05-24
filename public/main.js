@@ -86,6 +86,8 @@ $('#app').html(`
         </tbody>
     </table>
 `)
+const clearButton = $("#clear")
+const calcButton = $("#calc")
 
-$("#clear").on("click", clear)
-$("#calc").on("click", print)
+clearButton.on("click", clear)
+calcButton.on("click", print)

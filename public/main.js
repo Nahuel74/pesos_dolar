@@ -17,8 +17,8 @@ $('#app').html(`
     <table>
         <thead>
             <tr>
-                <th colspan="2">Dólar Oficial</th>
-                <th colspan="2">Dólar Blue</th>
+                <th colspan="2">Dólar 'Oficial'</th>
+                <th colspan="2">Dólar 'Blue'</th>
                 <th>Dólar 'Solidario'</th>
                 <th>Pesos (Steam, compras al exterior, etc.)</th>
             </tr>

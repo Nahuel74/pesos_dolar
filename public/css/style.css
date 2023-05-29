@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(23 43 52);
     font-family: 'Roboto', sans-serif;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -11,22 +11,25 @@ table {
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
-
   }
   
+  tbody{
+    background-color: rgb(19 61 80);
+  }
   th, td {
     border: 1px solid #787878;
     padding: 8px;
   }
   
   th {
-    background-color: #ffffff;
+    background-color: rgb(228 247 245);
     color: black;
   }
   
   input[type='number'] {
     padding: 12px 20px;
     margin: 8px 0;
+    background-color: rgb(228 247 245);
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -38,7 +41,7 @@ table {
   }
 
   button {
-    background-color: rgb(121, 121, 121);
+    background-color: rgb(63 135 134);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -48,10 +51,15 @@ table {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition: 200ms;
   }
 
-  @media (max-width: 768px) {
+  button:hover{
+    background-color: rgb(191 231 231);
+    color: rgb(42, 80, 75);
+  }
+
+  @media (max-width: 1595px) {
 
     input[type='number']{
         padding: 10px 0;

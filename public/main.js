@@ -1,6 +1,6 @@
 import {clear, print} from "./js/print.js"
 
-async function getData(){
+const getData = async () => {
     try{
         const web = await fetch('/scrape')
         const data = await web.json()

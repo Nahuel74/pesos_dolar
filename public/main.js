@@ -88,6 +88,13 @@ $('#app').html(`
 `)
 const clearButton = $("#clear")
 const calcButton = $("#calc")
+const inputs = $(".inputs")
 
 clearButton.on("click", clear)
 calcButton.on("click", print)
+
+inputs.on("keyup", (event) => {
+    if(event.keyCode == 13){
+        print()
+    }
+})
